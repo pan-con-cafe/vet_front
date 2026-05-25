@@ -1,0 +1,17 @@
+<div class="toolbar">
+  <div class="search-wrap">
+    <input [(ngModel)]="search" placeholder="Buscar" class="search-input" />
+    <span class="material-icons">search</span>
+  </div>
+  <button class="btn-nuevo" (click)="router.navigate(['/registro'])">+ Nuevo</button>
+</div>
+<div class="grid">
+  <div class="card" *ngFor="let m of filtradas()" (click)="router.navigate(['/mascotas', m.idMascota])">
+    <div class="img-wrap">
+      <img [src]="m.image || 'assets/no-pet.png'" [alt]="m.name" />
+    </div>
+    <div class="info">
+      <span class="name">{{ m.name | uppercase }}</span>
+    </div>
+  </div>
+</div>

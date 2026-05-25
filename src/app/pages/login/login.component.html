@@ -1,0 +1,15 @@
+<div style="display:flex;justify-content:center;align-items:center;height:100vh;">
+    <div style="width:320px;display:flex;flex-direction:column;gap:16px;">
+    <h2>Veterinaria — Login</h2>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="email" type="email" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="password" type="password" />
+    </mat-form-field>
+    <p *ngIf="error" style="color:red;font-size:12px;">{{ error }}</p>
+    <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+    </div>
+</div>

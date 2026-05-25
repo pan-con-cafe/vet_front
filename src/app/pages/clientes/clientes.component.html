@@ -1,0 +1,27 @@
+<div class="toolbar">
+  <div class="search-wrap">
+    <input [(ngModel)]="search" placeholder="Buscar" class="search-input" />
+    <span class="material-icons">search</span>
+  </div>
+  <button class="btn-nuevo" (click)="router.navigate(['/registro'])">+ Nuevo</button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Teléfono(s)</th>
+      <th>Dirección</th>
+      <th>Mascota(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of filtrados(); let i = index"
+        [class.striped]="i % 2 !== 0"
+        style="cursor:pointer">
+      <td>{{ c.nameLastname }}</td>
+      <td>{{ c.telefonos?.join(', ') }}</td>
+      <td>{{ c.address }}</td>
+      <td>{{ getMascotas(c) }}</td>
+    </tr>
+  </tbody>
+</table>

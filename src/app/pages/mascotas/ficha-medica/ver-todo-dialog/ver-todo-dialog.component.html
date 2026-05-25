@@ -1,0 +1,59 @@
+<div style="padding:24px;">
+  <h3 style="margin-bottom:16px;">{{ titulo }}</h3>
+  <!-- VACUNAS -->
+  <table *ngIf="data.tipo === 'vacunas'" style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr>
+        <th class="th">Tipo</th>
+        <th class="th">Fecha</th>
+        <th class="th">Peso</th>
+        <th class="th">Temp.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let v of data.datos">
+        <td class="td">{{ v.tipo }}</td>
+        <td class="td">{{ formatFecha(v.date) }}</td>
+        <td class="td">{{ v.weight ?? '—' }} kg</td>
+        <td class="td">{{ v.temperature ?? '—' }} °C</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- DESPARACITACIONES -->
+  <table *ngIf="data.tipo === 'desparacitaciones'" style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr>
+        <th class="th">Producto</th>
+        <th class="th">Fecha</th>
+        <th class="th">Dosis</th>
+        <th class="th">Peso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of data.datos">
+        <td class="td">{{ d.product }}</td>
+        <td class="td">{{ formatFecha(d.date) }}</td>
+        <td class="td">{{ d.dose ?? '—' }} g</td>
+        <td class="td">{{ d.weight ?? '—' }} kg</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- CIRUGÍAS -->
+  <table *ngIf="data.tipo === 'cirugias'" style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr>
+        <th class="th">Descripción</th>
+        <th class="th">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of data.datos">
+        <td class="td">{{ c.description }}</td>
+        <td class="td">{{ formatFecha(c.date) }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+    <button mat-stroked-button (click)="close()">Cerrar</button>
+  </div>
+</div>

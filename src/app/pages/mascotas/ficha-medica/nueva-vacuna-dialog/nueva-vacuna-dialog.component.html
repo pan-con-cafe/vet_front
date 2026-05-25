@@ -1,0 +1,26 @@
+<div style="padding:24px;">
+  <h3 style="margin-bottom:16px;">Registrar vacuna</h3>
+  <mat-form-field style="width:100%;margin-bottom:8px;">
+    <mat-label>Tipo de vacuna</mat-label>
+    <mat-select [(ngModel)]="form.typeVacuna_FK">
+      <mat-option *ngFor="let t of tipos" [value]="t.idTypeVacuna">{{ t.type }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field style="width:100%;margin-bottom:8px;">
+    <mat-label>Fecha</mat-label>
+    <input matInput type="date" [(ngModel)]="form.date" />
+  </mat-form-field>
+  <mat-form-field style="width:100%;margin-bottom:8px;">
+    <mat-label>Peso (kg)</mat-label>
+    <input matInput type="number" [(ngModel)]="form.weight" />
+  </mat-form-field>
+  <mat-form-field style="width:100%;margin-bottom:8px;">
+    <mat-label>Temperatura (°C)</mat-label>
+    <input matInput type="number" [(ngModel)]="form.temperature" />
+  </mat-form-field>
+  <p *ngIf="error" style="color:red;font-size:12px;">{{ error }}</p>
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px;">
+    <button mat-stroked-button (click)="close()">Cancelar</button>
+    <button mat-raised-button style="background:#E86A10;color:white;" (click)="save()">Guardar</button>
+  </div>
+</div>

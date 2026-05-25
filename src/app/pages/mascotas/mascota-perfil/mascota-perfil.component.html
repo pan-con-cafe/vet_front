@@ -1,0 +1,94 @@
+<div *ngIf="mascota" class="perfil-wrap">
+  <!-- FLECHA VOLVER -->
+  <button class="btn-back" (click)="router.navigate(['/mascotas'])">←</button>
+  <!-- TARJETA NARANJA -->
+  <div class="tarjeta">
+    <div class="tarjeta-top">
+      <div class="tarjeta-info">
+        <div class="nombre-row">
+          <span class="nombre">{{ mascota.name | uppercase }}</span>
+          <span class="genero">{{ mascota.gender ? '♂' : '♀' }}</span>
+        </div>
+        <span class="raza">{{ mascota.race }}</span>
+        <div class="detalle-row">
+          <span>{{ calcularEdad() }} años</span>
+          <span>{{ mascota.species ? 'Canino' : 'Felino' }}</span>
+          <button class="btn-edit" (click)="editar()">✏️</button>
+        </div>
+      </div>
+      <div class="foto-wrap">
+        <img [src]="mascota.image || 'assets/no-pet.png'" [alt]="mascota.name" />
+      </div>
+    </div>
+    <!-- PROPIETARIO CON FLECHAS -->
+    <div class="propietario-row" *ngIf="mascota.propietarios?.length">
+      <button class="flecha" (click)="prevProp()"
+              [disabled]="propIndex === 0">‹</button>
+      <div class="propietario-info">
+        <span class="prop-nombre">{{ propActual().nameLastname }}</span>
+        <span class="prop-dir">{{ propActual().address }}</span>
+        <div class="prop-tels">
+          <span *ngFor="let t of propActual().telefonos">{{ t }}</span>
+        </div>
+      </div>
+      <button class="flecha" (click)="nextProp()"
+              [disabled]="propIndex === mascota.propietarios.length - 1">›</button>
+    </div>
+  </div>
+  <!-- RESUMEN -->
+  <div class="resumen">
+    <!-- RESUMEN MÉDICO -->
+    <div class="col">
+      <h3>Resumen Médico</h3>
+      <div class="seccion">
+        <span class="sec-titulo">Vacunas:</span>
+        <div class="item-row" *ngFor="let v of ultimasVacunas()">
+          <span>{{ v.tipo }}</span>
+          <span class="dots"></span>
+          <span>{{ formatFecha(v.date) }}</span>
+        </div>
+        <span *ngIf="!mascota.vacunas?.length" class="empty">Sin registros</span>
+      </div>
+      <div class="seccion">
+        <span class="sec-titulo">Última desparacitación:</span>
+        <div class="item-row" *ngIf="ultimaDesp()">
+          <span>{{ ultimaDesp().product }}</span>
+          <span class="dots"></span>
+          <span>{{ formatFecha(ultimaDesp().date) }}</span>
+        </div>
+        <span *ngIf="!ultimaDesp()" class="empty">Sin registros</span>
+      </div>
+      <button class="btn-ver" (click)="router.navigate(['/mascotas', mascota.idMascota, 'medico'])">
+        Ver Todo
+      </button>
+    </div>
+    <div class="divider"></div>
+    <!-- GROOMING -->
+    <div class="col">
+      <h3>Grooming</h3>
+      <div *ngIf="ultimoGrooming(); else sinGrooming">
+        <div class="seccion">
+          <span class="sec-titulo">Última visita:</span>
+          <span>{{ formatFecha(ultimoGrooming().date) }}</span>
+        </div>
+        <div class="seccion">
+          <span class="sec-titulo">Tipo de corte:</span>
+          <span>{{ ultimoGrooming().haircut || '—' }}</span>
+        </div>
+        <div class="seccion">
+          <span class="sec-titulo">Monto total:</span>
+          <span>S/. {{ ultimoGrooming().amount | number:'1.2-2' }}</span>
+        </div>
+      </div>
+      <ng-template #sinGrooming>
+        <span class="empty">Sin registros</span>
+      </ng-template>
+      <button class="btn-ver" (click)="router.navigate(['/mascotas', mascota.idMascota, 'grooming'])">
+        Ver Todo
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="!mascota" style="text-align:center;padding:40px;color:#aaa;">
+  Cargando...
+</div>

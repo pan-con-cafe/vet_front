@@ -1,0 +1,158 @@
+.layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .bloque {
+      border: 2px solid #E86A10;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bloque-propietarios {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .propietario-form {
+      border: 1.5px solid #ddd;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .prop-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-row {
+      display: flex;
+      gap: 12px;
+    }
+    .img-placeholder {
+      width: 110px;
+      height: 110px;
+      background: #f2f2f2;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .campos-top {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .campo {
+      background: #f2f2f2;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .campo.full { width: 100%; }
+    .campo:disabled { opacity: 0.6; }
+    .gender-row {
+      display: flex;
+      gap: 12px;
+    }
+    .gender-btn {
+      background: #f2f2f2;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 6px 16px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .gender-btn.selected { border-color: #E86A10; }
+    .btn-añadir {
+      border: 1.5px solid #ddd;
+      border-radius: 16px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      background: white;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-añadir:hover { border-color: #E86A10; color: #E86A10; }
+    .add-tel-btn {
+      background: none;
+      border: none;
+      color: #E86A10;
+      font-size: 12px;
+      cursor: pointer;
+      text-align: left;
+      padding: 0;
+    }
+    .remove-btn {
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .remove-btn:hover { color: red; }
+    .telefono-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .autocomplete-wrap { position: relative; }
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-height: 160px;
+      overflow-y: auto;
+    }
+    .suggestion {
+      padding: 8px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .suggestion:hover { background: #FDF0E8; }
+    .footer {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .btn-cancelar {
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 24px;
+      padding: 12px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-guardar {
+      background: #E86A10;
+      color: white;
+      border: none;
+      border-radius: 24px;
+      padding: 12px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-guardar:disabled { opacity: 0.5; cursor: not-allowed; }

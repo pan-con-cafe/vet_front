@@ -1,0 +1,81 @@
+<div *ngIf="mascota" class="wrap">
+
+  <div class="header-row">
+    <button class="btn-back" (click)="router.navigate(['/mascotas', mascotaId])">←</button>
+    <h2 class="titulo">FICHA MÉDICA</h2>
+  </div>
+  <div class="layout">
+    <!-- TARJETA MASCOTA -->
+    <div class="tarjeta">
+      <div class="tarjeta-info">
+        <span class="t-nombre">{{ mascota.name | uppercase }}</span>
+        <span class="t-raza">{{ mascota.race }}</span>
+        <div class="t-detalle">
+          <span>{{ calcularEdad() }} años</span>
+          <span>{{ mascota.species ? 'Canino' : 'Felino' }}</span>
+        </div>
+        <span class="t-feature">{{ mascota.feature }}</span>
+      </div>
+      <div class="divider-dashed"></div>
+      <div class="propietario-row">
+        <button class="flecha" (click)="prevProp()" [disabled]="propIndex === 0">‹</button>
+        <div class="prop-info" *ngIf="propActual()">
+          <span class="prop-nombre">{{ propActual().nameLastname }}</span>
+          <span class="prop-dir">{{ propActual().address }}</span>
+          <span class="prop-tel">{{ propActual().telefonos?.[0] }}</span>
+        </div>
+        <button class="flecha" (click)="nextProp()"
+                [disabled]="propIndex === mascota.propietarios.length - 1">›</button>
+      </div>
+    </div>
+    <!-- SECCIONES MÉDICAS -->
+    <div class="secciones">
+      <!-- VACUNAS -->
+      <div class="seccion">
+        <div class="sec-header">
+          <h3>Registro de vacunas</h3>
+          <button class="btn-add" (click)="nuevaVacuna()">⊕</button>
+        </div>
+        <div class="registro-row" *ngFor="let v of ultimas(mascota.vacunas, 3)">
+          <span>{{ v.tipo }}</span>
+          <span class="fecha">{{ formatFecha(v.date) }}</span>
+        </div>
+        <span *ngIf="!mascota.vacunas?.length" class="empty">Sin registros</span>
+        <button class="btn-ver" *ngIf="mascota.vacunas?.length > 3"
+                (click)="verTodo('vacunas')">Ver todo</button>
+      </div>
+      <!-- DESPARACITACIONES -->
+      <div class="seccion">
+        <div class="sec-header">
+          <h3>Historial de desparacitaciones</h3>
+          <button class="btn-add" (click)="nuevaDesp()">⊕</button>
+        </div>
+        <div class="registro-row desp" *ngFor="let d of ultimas(mascota.desparacitaciones, 3)">
+          <div>
+            <span>{{ d.product }}</span><br>
+            <span class="sub">Dosis: {{ d.dose }}g &nbsp; Peso: {{ d.weight }}kg</span>
+          </div>
+          <span class="fecha">{{ formatFecha(d.date) }}</span>
+        </div>
+        <span *ngIf="!mascota.desparacitaciones?.length" class="empty">Sin registros</span>
+        <button class="btn-ver" *ngIf="mascota.desparacitaciones?.length > 3"
+                (click)="verTodo('desparacitaciones')">Ver todo</button>
+      </div>
+      <!-- CIRUGÍAS -->
+      <div class="seccion">
+        <div class="sec-header">
+          <h3>Cirugías</h3>
+          <button class="btn-add" (click)="nuevaCirugia()">⊕</button>
+        </div>
+        <div class="registro-row" *ngFor="let c of ultimas(mascota.cirugias, 3)">
+          <span>{{ c.description }}</span>
+          <span class="fecha">{{ formatFecha(c.date) }}</span>
+        </div>
+        <span *ngIf="!mascota.cirugias?.length" class="empty">Sin registros</span>
+        <button class="btn-ver" *ngIf="mascota.cirugias?.length > 3"
+                (click)="verTodo('cirugias')">Ver todo</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!mascota" style="text-align:center;padding:40px;color:#aaa;">Cargando...</div>

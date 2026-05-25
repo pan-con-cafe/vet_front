@@ -1,0 +1,49 @@
+<div *ngIf="mascota" class="wrap">
+  <div class="header-row">
+    <button class="btn-back" (click)="router.navigate(['/mascotas', mascotaId])">←</button>
+    <h2 class="titulo">HISTORIAL DE GROOMING</h2>
+  </div>
+  <div class="layout">
+    <!-- TARJETA MASCOTA -->
+    <div class="tarjeta">
+      <div class="tarjeta-info">
+        <span class="t-nombre">{{ mascota.name | uppercase }}</span>
+        <span class="t-raza">{{ mascota.race }}</span>
+        <div class="t-detalle">
+          <span>{{ calcularEdad() }} años</span>
+          <span>{{ mascota.species ? 'Canino' : 'Felino' }}</span>
+        </div>
+        <span class="t-feature">{{ mascota.feature }}</span>
+      </div>
+      <div class="divider-dashed"></div>
+      <div class="propietario-row">
+        <button class="flecha" (click)="prevProp()" [disabled]="propIndex === 0">‹</button>
+        <div class="prop-info" *ngIf="propActual()">
+          <span class="prop-nombre">{{ propActual().nameLastname }}</span>
+          <span class="prop-dir">{{ propActual().address }}</span>
+          <span class="prop-tel">{{ propActual().telefonos?.[0] }}</span>
+        </div>
+        <button class="flecha" (click)="nextProp()"
+                [disabled]="propIndex === mascota.propietarios.length - 1">›</button>
+      </div>
+    </div>
+    <!-- GRID DE GROOMINGS -->
+    <div class="grid">
+      <div class="grooming-card" *ngFor="let g of mascota.groomings">
+        <div class="card-row"><span class="label">Fecha:</span><span>{{ formatFecha(g.date) }}</span></div>
+        <div class="card-row"><span class="label">Ingreso:</span><span>{{ g.entry ?? '—' }}</span></div>
+        <div class="card-row"><span class="label">Salida:</span><span>{{ g.exit ?? '—' }}</span></div>
+        <div class="card-row"><span class="label">Corte:</span><span>{{ g.haircut ?? '—' }}</span></div>
+        <div class="card-row"><span class="label">Monto total:</span><span>S/. {{ g.amount | number:'1.2-2' }}</span></div>
+        <div class="card-row"><span class="label">A cuenta:</span><span>S/. {{ g.onCredit | number:'1.2-2' }}</span></div>
+        <div class="card-row"><span class="label">Saldo:</span><span>S/. {{ g.residue | number:'1.2-2' }}</span></div>
+        <button class="btn-edit" (click)="editarGrooming(g)">✏️</button>
+      </div>
+      <!-- CARD NUEVO -->
+      <div class="grooming-card card-add" (click)="nuevoGrooming()">
+        <span class="plus">+</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!mascota" style="text-align:center;padding:40px;color:#aaa;">Cargando...</div>

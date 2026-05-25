@@ -1,0 +1,22 @@
+<div style="padding:24px;">
+  <h3 style="margin-bottom:8px;">Reprogramar cita</h3>
+  <p style="font-size:13px;color:#666;margin-bottom:16px;">
+    {{ data.tipo }} — Mascota: {{ data.mascota.name }}
+  </p>
+  <mat-form-field style="width:100%;">
+    <mat-label>Nueva fecha</mat-label>
+    <input matInput [matDatepicker]="picker"
+           [(ngModel)]="nuevaFecha"
+           [min]="minDate"
+           readonly />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <p *ngIf="error" style="color:red;font-size:12px;">{{ error }}</p>
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px;">
+    <button mat-stroked-button (click)="close()">Cancelar</button>
+    <button mat-raised-button style="background:#E86A10;color:white;" (click)="save()">
+      Reprogramar
+    </button>
+  </div>
+</div>

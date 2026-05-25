@@ -1,0 +1,91 @@
+<h2 style="text-align:center;color:#E86A10;font-size:24px;margin-bottom:24px;">
+  {{ modoEdicion ? 'EDITAR MASCOTA' : 'REGISTRO DE MASCOTA' }}
+</h2>
+<div class="layout">
+  <!-- BLOQUE MASCOTA -->
+  <div class="bloque">
+    <div class="top-row">
+      <div class="img-placeholder" (click)="fileInput.click()">
+        <img *ngIf="imagenPreview" [src]="imagenPreview"
+            style="width:100%;height:100%;object-fit:cover;border-radius:12px;" />
+        <span *ngIf="!imagenPreview" class="material-icons"
+            style="font-size:48px;color:#ccc;">add_a_photo</span>
+        <input #fileInput type="file" accept="image/*"
+            style="display:none" (change)="onImagenSeleccionada($event)" />
+      </div>
+      <div class="campos-top">
+        <select [(ngModel)]="mascota.species" class="campo">
+          <option [ngValue]="null" disabled>Especie</option>
+          <option [ngValue]="true">Perro</option>
+          <option [ngValue]="false">Gato</option>
+        </select>
+        <mat-form-field class="campo-fecha">
+          <input matInput [matDatepicker]="picker"
+                [(ngModel)]="mascota.birth_date"
+                [max]="maxDate"
+                placeholder="F. Nacimiento"
+                readonly />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <input [(ngModel)]="mascota.color" class="campo" placeholder="Color" />
+        <input [(ngModel)]="mascota.race" class="campo" placeholder="Raza" />
+      </div>
+    </div>
+    <div class="gender-row">
+      <button class="gender-btn" [class.selected]="mascota.gender === true" (click)="mascota.gender = true">
+        <span style="color:#5B9BD5;font-size:22px;">♂</span>
+      </button>
+      <button class="gender-btn" [class.selected]="mascota.gender === false" (click)="mascota.gender = false">
+        <span style="color:#E86A10;font-size:22px;">♀</span>
+      </button>
+    </div>
+    <input [(ngModel)]="mascota.name" class="campo full" placeholder="Nombre" />
+    <textarea [(ngModel)]="mascota.feature" class="campo full" placeholder="Particularidades" rows="3"></textarea>
+  </div>
+  <!-- BLOQUE PROPIETARIOS -->
+  <div class="bloque-propietarios">
+    <div class="propietario-form" *ngFor="let p of propietarios; let i = index">
+      <div class="prop-header">
+        <span style="font-weight:600;font-size:13px;">Propietario {{ i + 1 }}</span>
+        <button *ngIf="i > 0" class="remove-btn" (click)="removePropietario(i)">✕</button>
+      </div>
+      <!-- Autocompletado -->
+      <div class="autocomplete-wrap">
+        <input
+          [(ngModel)]="p.nameLastname"
+          (ngModelChange)="onNombreChange(i)"
+          (blur)="onBlur(i)"
+          class="campo full"
+          placeholder="Nombre y apellido" />
+        <div class="dropdown" *ngIf="p.showSuggestions && getSuggestions(i).length">
+          <div class="suggestion"
+               *ngFor="let s of getSuggestions(i)"
+               (mousedown)="selectCliente(i, s)">
+            {{ s.nameLastname }} — {{ s.address }}
+          </div>
+        </div>
+      </div>
+      <input [(ngModel)]="p.address" class="campo full" placeholder="Dirección"
+             [disabled]="p.clienteId !== null" />
+      <div class="telefono-row" *ngFor="let t of p.telefonos; let j = index; trackBy: trackByIndex">
+        <input
+          [value]="p.telefonos[j]"
+          (input)="filtrarTelefono($event, i, j)"
+          class="campo full"
+          placeholder="Número de teléfono"
+          inputmode="numeric" />
+        <button *ngIf="j > 0" class="remove-btn" (click)="removeTel(i, j)">✕</button>
+      </div>
+      <button class="add-tel-btn" (click)="addTel(i)">+ teléfono</button>
+    </div>
+    <button class="btn-añadir" (click)="addPropietario()">+ Añadir propietario</button>
+  </div>
+</div>
+<p *ngIf="error" style="color:red;text-align:center;margin-top:8px;">{{ error }}</p>
+<div class="footer">
+  <button class="btn-cancelar" (click)="cancelar()">Cancelar</button>
+  <button class="btn-guardar" [disabled]="!puedeGuardar() || subiendoImagen || guardando" (click)="guardar()">
+    {{ guardando ? 'Guardando...' : subiendoImagen ? 'Subiendo imagen...' : 'Guardar' }}
+  </button>
+</div>

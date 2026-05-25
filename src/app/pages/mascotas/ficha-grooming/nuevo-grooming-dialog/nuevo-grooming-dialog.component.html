@@ -1,0 +1,77 @@
+<div style="padding:24px;">
+  <h3 style="text-align:center;margin-bottom:4px;">Grooming</h3>
+  <p style="text-align:center;color:#666;font-size:13px;margin-bottom:16px;">
+    {{ data.mascotaNombre }}
+  </p>
+
+  <!-- Ingreso y Salida con selector + botón hora actual -->
+  <div style="display:flex;gap:16px;margin-bottom:12px;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+      <mat-form-field style="width:100%;">
+        <mat-label>Ingreso</mat-label>
+        <mat-select [(ngModel)]="form.entry">
+          <mat-option [value]="null">-- Sin hora --</mat-option>
+          <mat-option *ngFor="let h of horas" [value]="h">{{ h }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-stroked-button style="font-size:11px;height:28px;" 
+              (click)="usarHoraActual('entry')">
+        Usar hora actual
+      </button>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+      <mat-form-field style="width:100%;">
+        <mat-label>Salida</mat-label>
+        <mat-select [(ngModel)]="form.exit">
+          <mat-option [value]="null">-- Sin hora --</mat-option>
+          <mat-option *ngFor="let h of horas" [value]="h">{{ h }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-stroked-button style="font-size:11px;height:28px;" 
+              (click)="usarHoraActual('exit')">
+        Usar hora actual
+      </button>
+    </div>
+  </div>
+
+  <mat-form-field style="width:100%;margin-bottom:8px;">
+    <mat-label>Tipo de corte</mat-label>
+    <input matInput [(ngModel)]="form.haircut" />
+  </mat-form-field>
+
+  <div style="display:flex;gap:16px;margin-bottom:8px;">
+    <mat-form-field style="width:50%;">
+      <mat-label>Fecha</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="form.date"
+             [min]="minDate" readonly />
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field style="flex:1;">
+      <mat-label>Monto total</mat-label>
+      <!-- ✅ min="0" + bloquearCaracteres evita negativos y 'e' -->
+      <input matInput type="number" min="0" [(ngModel)]="form.amount"
+             (keydown)="bloquearCaracteres($event)" />
+    </mat-form-field>
+  </div>
+
+  <div style="display:flex;gap:16px;margin-bottom:8px;">
+    <mat-form-field style="flex:1;">
+      <mat-label>A cuenta</mat-label>
+      <input matInput type="number" min="0" [(ngModel)]="form.onCredit"
+             (keydown)="bloquearCaracteres($event)" />
+    </mat-form-field>
+    <mat-form-field style="flex:1;">
+      <mat-label>Saldo</mat-label>
+      <input matInput type="number" min="0" [(ngModel)]="form.residue"
+             (keydown)="bloquearCaracteres($event)" />
+    </mat-form-field>
+  </div>
+
+  <p *ngIf="error" style="color:red;font-size:12px;">{{ error }}</p>
+
+  <div style="display:flex;gap:8px;justify-content:center;margin-top:16px;">
+    <button mat-raised-button style="background:#444;color:white;" (click)="close()">Cancelar</button>
+    <button mat-raised-button style="background:#E86A10;color:white;" (click)="save()">Guardar</button>
+  </div>
+</div>
