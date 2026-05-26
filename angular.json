@@ -18,8 +18,8 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/vet-front-provisional",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
+            "index": "index.html",
+            "browser": "main.ts",
             "polyfills": [
               "zone.js"
             ],
