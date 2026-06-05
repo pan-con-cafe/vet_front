@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { AuthService } from './core/services/auth.service';
 import { CommonModule, AsyncPipe } from '@angular/common';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,20 @@ import { CommonModule, AsyncPipe } from '@angular/common';
 })
 
 export class AppComponent {
+  mostrarNavbar = true;
+
+  private rutasSinNavbar = [
+    '/mascotas/',
+    '/registro'
+  ];
+
   title = 'vet-front-provisional';
-  constructor(public authService: AuthService) {}
+
+  constructor(public authService: AuthService, private router: Router) {
+    this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)
+    ).subscribe((e: any) => {
+      this.mostrarNavbar = !this.rutasSinNavbar.some(r => e.urlAfterRedirects.includes(r));
+    });
+  }
 }
