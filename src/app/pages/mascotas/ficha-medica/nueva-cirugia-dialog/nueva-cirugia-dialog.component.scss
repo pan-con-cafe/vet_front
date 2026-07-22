@@ -1,0 +1,123 @@
+.dialog-container{
+    width: auto;
+    padding: 20px 30px;
+    text-align: center;
+}
+
+.dialog-title{
+    font-family:"Nunito",sans-serif;
+    font-size:28px;
+    font-weight:500;
+    color:#222;
+}
+
+h2{
+    margin:0;
+    padding-bottom:30px;
+}
+
+.mascota {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ===== CAMPO FECHA ===== */
+
+.campo{
+    width:100%;
+    margin-bottom:18px;
+}
+
+::ng-deep .campo .mat-mdc-text-field-wrapper{
+    background:#dcdcdc !important;
+    border-radius:16px !important;
+    height:50px;
+    padding:0 18px;
+}
+
+::ng-deep .campo .mat-mdc-form-field-flex{
+    height:50px;
+    font-family:"Nunito",sans-serif;
+    font-size:20px;
+}
+
+::ng-deep .campo .mdc-line-ripple{
+    display:none;
+}
+
+::ng-deep .campo .mat-mdc-form-field-subscript-wrapper{
+    display:none;
+}
+
+::ng-deep .campo input{
+    font-family:"Nunito",sans-serif;
+    font-size:20px;
+}
+
+/* ===== DESCRIPCIÓN ===== */
+
+.campo-textarea{
+    width:100%;
+    margin-bottom:0;
+}
+
+::ng-deep .campo-textarea .mat-mdc-text-field-wrapper{
+    background:#dcdcdc !important;
+    border-radius:16px !important;
+    padding:0 18px !important;
+    font-family:"Nunito",sans-serif;
+    font-size:20px;
+}
+
+::ng-deep .campo-textarea textarea{
+    height:150px !important;
+    resize:none;
+}
+
+::ng-deep .campo-textarea .mdc-line-ripple{
+    display:none;
+}
+
+::ng-deep .campo-textarea .mat-mdc-form-field-subscript-wrapper{
+    display:none;
+}
+
+/* ===== BOTONES ===== */
+
+.buttons{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:22px;
+}
+
+.btn-cancel,
+.btn-save{
+    width:140px;
+    height:42px;
+    border:none;
+    border-radius:30px;
+    font-family:"Fredoka",sans-serif;
+    font-size:24px;
+    font-weight:500;
+    cursor:pointer;
+}
+
+.btn-cancel{
+    background:#555;
+    color:white;
+}
+
+.btn-save{
+    background:#ff7300;
+    color:white;
+}
+
+.error{
+    margin-top:10px;
+    color:#d32f2f;
+    font-size:20px;
+}

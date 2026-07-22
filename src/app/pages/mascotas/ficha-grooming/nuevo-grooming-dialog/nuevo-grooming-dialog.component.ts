@@ -28,6 +28,7 @@ export class NuevoGroomingDialogComponent implements OnInit {
   minDate = new Date();
   hoy = new Date().toISOString().split('T')[0];
   error = '';
+  maxDate = new Date();
 
   // Horas disponibles en intervalos de 30 minutos
   horas: string[] = Array.from({ length: 48 }, (_, i) => {

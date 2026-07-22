@@ -1,0 +1,62 @@
+.cancelar-modal{
+    width:auto;
+    padding:20px 30px;
+    text-align:center;
+}
+
+.cancelar-modal h2{
+    margin:0 0 20px;
+    font-family:"Nunito",sans-serif;
+    font-size:30px;
+    font-weight:700;
+    color:#222;
+}
+
+.mensaje{
+    margin:0;
+    font-family:"Nunito",sans-serif;
+    font-size:22px;
+    color:#444;
+    line-height:1.35;
+}
+
+.submensaje{
+    margin:4px 0 28px;
+    font-family:"Nunito",sans-serif;
+    font-size:22px;
+    color:#555;
+}
+
+.acciones{
+    display:flex;
+    justify-content:center;
+    gap:24px;
+}
+
+.btn-cancelar,
+.btn-eliminar{
+    width:135px;
+    height:44px;
+    border:none;
+    border-radius:30px;
+    font-family:"Fredoka",sans-serif;
+    font-size:22px;
+    font-weight:500;
+    cursor:pointer;
+}
+
+.btn-cancelar{
+    background:#555;
+    color:#fff;
+}
+
+.btn-eliminar{
+    background:#ff7300;
+    color:#fff;
+}
+
+.error{
+    margin-bottom:16px;
+    color:#d32f2f;
+    font-size:18px;
+}

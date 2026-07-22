@@ -32,7 +32,7 @@ export class CitasComponent implements OnInit{
   ngOnInit() { this.load(); }
 
   load() {
-    this.citaService.getAll().subscribe(data => this.citas = data);
+    this.citaService.getAll().subscribe(data => {this.citas = data; console.log(this.citas);});
   }
 
   get citasHoy() {
@@ -42,9 +42,9 @@ export class CitasComponent implements OnInit{
   }
 
   get citasFuturas() {
-    return this.citas.filter(c => 
-      c.date > this.fechaHoy && c.status === 'pendiente'
-    );
+    return this.citas
+      .filter(c => c.date > this.fechaHoy && c.status === 'pendiente')
+      .sort((a, b) => a.date.localeCompare(b.date));
   }
 
   formatFecha(date: string): string {
@@ -53,7 +53,7 @@ export class CitasComponent implements OnInit{
   }
 
   nuevaCita() {
-    const ref = this.dialog.open(NuevaCitaDialogComponent, { width: '420px' });
+    const ref = this.dialog.open(NuevaCitaDialogComponent, { width: 'auto' });
     ref.afterClosed().subscribe(result => { if (result) this.load(); });
   }
 
@@ -67,7 +67,7 @@ export class CitasComponent implements OnInit{
 
   cancelar(cita: any) {
     const ref = this.dialog.open(CancelarCitaDialogComponent, {
-      width: '340px',
+      width: 'auto',
       data: cita
     });
     ref.afterClosed().subscribe(result => { if (result) this.load(); });
@@ -80,22 +80,22 @@ export class CitasComponent implements OnInit{
 
     if (tipo.includes('vacuna')) {
       dialogComponent = NuevaVacunaDialogComponent;
-      dialogData = { mascotaId: cita.mascota.idMascota };
+      dialogData = { mascotaId: cita.mascota.idMascota, nombreMascota : cita.mascota.name };
     } else if (tipo.includes('grooming')) {
       dialogComponent = NuevoGroomingDialogComponent;
       dialogData = { mascotaId: cita.mascota.idMascota, mascotaNombre: cita.mascota.name, grooming: null };
     } else if (tipo.includes('desparacitacion') || tipo.includes('desparasitacion')) {
       dialogComponent = NuevaDespDialogComponent;
-      dialogData = { mascotaId: cita.mascota.idMascota };
+      dialogData = { mascotaId: cita.mascota.idMascota, nombreMascota : cita.mascota.name };
     } else if (tipo.includes('cirugia') || tipo.includes('cirugía')) {
       dialogComponent = NuevaCirugiaDialogComponent;
-      dialogData = { mascotaId: cita.mascota.idMascota };
+      dialogData = { mascotaId: cita.mascota.idMascota, nombreMascota : cita.mascota.name };
     } else {
       return;
     }
 
     const ref = this.dialog.open(dialogComponent, {
-      width: '480px',
+      width: 'auto',
       data: dialogData
     });
 

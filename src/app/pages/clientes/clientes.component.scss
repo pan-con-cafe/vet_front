@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-top: 35px;
+  margin-bottom: 45px;
 }
 .search-wrap {
   display: flex;
@@ -12,43 +13,49 @@
   border-radius: 24px;
   padding: 8px 16px;
   gap: 8px;
-  width: 400px;
+  width: 450px;
 }
 .search-input {
   border: none;
   background: none;
   outline: none;
-  font-size: 15px;
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
   width: 100%;
 }
 .btn-nuevo {
-  background: #E86A10;
+  background: #FF6B00;
   color: white;
   border: none;
   border-radius: 24px;
-  padding: 10px 24px;
-  font-size: 15px;
-  font-weight: 600;
+  padding: 6px 20px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
   cursor: pointer;
 }
 table {
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
   border-collapse: collapse;
+  font-family: "Nunito", sans-serif;
 }
 th {
   background: white;
   font-weight: 700;
-  padding: 12px 16px;
+  font-size: 18px;
+  padding: 7px 10px;
   border: 1px solid #ddd;
-  text-align: left;
-}
-td {
-  padding: 12px 16px;
-  border: 1px solid #ddd;
-}
-tr.striped td {
+  text-align: center;
   background: #FDF0E8;
 }
+td {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+}
+
 tr:hover td { 
-  background: #fde8d4;
+  background: #FDF0E8;
 }

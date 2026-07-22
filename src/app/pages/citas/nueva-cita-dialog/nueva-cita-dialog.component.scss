@@ -1,0 +1,121 @@
+.cita-modal{
+    padding:20px 30px;
+    text-align:center;
+}
+
+.cita-modal h2{
+    margin:0;
+    padding-bottom:30px;
+    font-family:"Nunito",sans-serif;
+    font-size:28px;
+    font-weight:700;
+    color:#222;
+}
+
+/* ---------- Mascota ---------- */
+
+.mascota-row{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+}
+
+.mascota{
+    flex:1;
+}
+
+.btn-add{
+    width:52px;
+    height:50px;
+    border:none;
+    border-radius:16px;
+    background:#dcdcdc;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.btn-add .material-icons{
+    font-size:38px;
+    color:#222;
+}
+
+/* ---------- Fila ---------- */
+
+.fila{
+    display:flex;
+    gap:18px;
+}
+
+.mitad{
+    flex:1;
+}
+
+/* ---------- Campos ---------- */
+
+.campo{
+    width:100%;
+    margin-bottom:18px;
+}
+
+::ng-deep .campo .mat-mdc-text-field-wrapper{
+    background:#dcdcdc !important;
+    border-radius:16px !important;
+    height:50px;
+    padding:0 18px;
+    font-size: 18px;
+    font-family: 'Nunito', sans-serif;
+}
+
+::ng-deep .campo .mat-mdc-form-field-flex{
+    height:50px;
+    align-items:center;
+}
+
+::ng-deep .campo .mdc-line-ripple{
+    display:none;
+}
+
+::ng-deep .campo .mat-mdc-form-field-subscript-wrapper{
+    display:none;
+}
+
+::ng-deep .campo input,
+::ng-deep .campo .mat-mdc-select-value{
+    font-family:"Nunito",sans-serif;
+    font-size:18px;
+}
+
+/* ---------- Botones ---------- */
+
+.acciones{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    margin-top:20px;
+}
+.btn-cancelar,
+.btn-guardar{
+    width:140px;
+    height:42px;
+    border:none;
+    border-radius:30px;
+    font-family:"Fredoka",sans-serif;
+    font-size:24px;
+    font-weight:500;
+    cursor:pointer;
+}
+.btn-cancelar{
+    background:#555;
+    color:white;
+}
+.btn-guardar{
+    background:#ff7300;
+    color:white;
+}
+.error{
+    color:#d32f2f;
+    font-size:20px;
+    margin-bottom:10px;
+}

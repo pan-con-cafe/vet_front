@@ -15,6 +15,6 @@ export class NavbarComponent {
   constructor(private dialog: MatDialog) {}
 
   openLogoutDialog() {
-    this.dialog.open(LogoutDialogComponent, { width: '320px' });
+    this.dialog.open(LogoutDialogComponent, { panelClass: 'logout-dialog' });
   }
 }

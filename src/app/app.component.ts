@@ -17,7 +17,8 @@ export class AppComponent {
 
   private rutasSinNavbar = [
     '/mascotas/',
-    '/registro'
+    '/registro',
+    '/login'
   ];
 
   title = 'vet-front-provisional';

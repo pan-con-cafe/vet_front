@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MascotaService } from '../../../core/services/mascota.service';
 import { NuevaVacunaDialogComponent } from './nueva-vacuna-dialog/nueva-vacuna-dialog.component';
@@ -10,7 +12,7 @@ import { VerTodoDialogComponent } from './ver-todo-dialog/ver-todo-dialog.compon
 
 @Component({
   selector: 'app-ficha-medica',
-  imports: [CommonModule, MatDialogModule],
+  imports: [CommonModule, MatDialogModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './ficha-medica.component.html',
   styleUrl: './ficha-medica.component.scss'
 })
@@ -64,21 +66,21 @@ export class FichaMedicaComponent implements OnInit {
 
   nuevaVacuna() {
     const ref = this.dialog.open(NuevaVacunaDialogComponent, {
-      width: '420px', data: { mascotaId: this.mascotaId }
+      width: 'auto', data: { mascotaId: this.mascotaId, nombreMascota : this.mascota.name }
     });
     ref.afterClosed().subscribe(r => { if (r) this.load(); });
   }
 
   nuevaDesp() {
     const ref = this.dialog.open(NuevaDespDialogComponent, {
-      width: '420px', data: { mascotaId: this.mascotaId }
+      width: 'auto', data: { mascotaId: this.mascotaId, nombreMascota : this.mascota.name }
     });
     ref.afterClosed().subscribe(r => { if (r) this.load(); });
   }
 
   nuevaCirugia() {
     const ref = this.dialog.open(NuevaCirugiaDialogComponent, {
-      width: '420px', data: { mascotaId: this.mascotaId }
+      width: 'auto', data: { mascotaId: this.mascotaId, nombreMascota : this.mascota.name }
     });
     ref.afterClosed().subscribe(r => { if (r) this.load(); });
   }
@@ -88,7 +90,7 @@ export class FichaMedicaComponent implements OnInit {
       : tipo === 'desparacitaciones' ? this.mascota.desparacitaciones
       : this.mascota.cirugias;
     this.dialog.open(VerTodoDialogComponent, {
-      width: '600px', data: { tipo, datos }
+      width: 'auto', data: { tipo, datos }
     });
   }
 }

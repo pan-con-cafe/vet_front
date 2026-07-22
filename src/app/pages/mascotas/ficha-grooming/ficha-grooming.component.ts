@@ -54,6 +54,16 @@ export class FichaGroomingComponent implements OnInit {
     return `${d}/${m}/${y}`;
   }
 
+  get groomingsOrdenados() {
+    if (!this.mascota?.groomings) return [];
+    return [...this.mascota.groomings].sort((a, b) => b.date.localeCompare(a.date));
+  }
+
+  formatHora(hora: string): string {
+    if (!hora) return '—';
+    return hora.slice(0, 5);
+  }
+
   nuevoGrooming() {
     const ref = this.dialog.open(NuevoGroomingDialogComponent, {
       width: '480px',

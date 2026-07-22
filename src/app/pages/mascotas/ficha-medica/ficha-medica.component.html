@@ -1,7 +1,9 @@
 <div *ngIf="mascota" class="wrap">
 
   <div class="header-row">
-    <button class="btn-back" (click)="router.navigate(['/mascotas', mascotaId])">←</button>
+    <button class="btn-back" (click)="router.navigate(['/mascotas', mascotaId])">
+      <span class="material-icons">arrow_back</span>
+    </button>
     <h2 class="titulo">FICHA MÉDICA</h2>
   </div>
   <div class="layout">
@@ -18,14 +20,17 @@
       </div>
       <div class="divider-dashed"></div>
       <div class="propietario-row">
-        <button class="flecha" (click)="prevProp()" [disabled]="propIndex === 0">‹</button>
+        <button class="flecha" (click)="prevProp()" [disabled]="propIndex === 0">
+          <span class="material-icons">chevron_left</span>
+        </button>
         <div class="prop-info" *ngIf="propActual()">
           <span class="prop-nombre">{{ propActual().nameLastname }}</span>
           <span class="prop-dir">{{ propActual().address }}</span>
           <span class="prop-tel">{{ propActual().telefonos?.[0] }}</span>
         </div>
-        <button class="flecha" (click)="nextProp()"
-                [disabled]="propIndex === mascota.propietarios.length - 1">›</button>
+        <button class="flecha" (click)="nextProp()" [disabled]="propIndex === mascota.propietarios.length - 1">
+          <span class="material-icons">chevron_right</span>
+        </button>
       </div>
     </div>
     <!-- SECCIONES MÉDICAS -->
@@ -34,7 +39,9 @@
       <div class="seccion">
         <div class="sec-header">
           <h3>Registro de vacunas</h3>
-          <button class="btn-add" (click)="nuevaVacuna()">⊕</button>
+          <button class="btn-add" (click)="nuevaVacuna()">
+            <span class="material-icons">add_circle_outline</span>
+          </button>
         </div>
         <div class="registro-row" *ngFor="let v of ultimas(mascota.vacunas, 3)">
           <span>{{ v.tipo }}</span>
@@ -48,7 +55,9 @@
       <div class="seccion">
         <div class="sec-header">
           <h3>Historial de desparacitaciones</h3>
-          <button class="btn-add" (click)="nuevaDesp()">⊕</button>
+          <button class="btn-add" (click)="nuevaDesp()">
+            <span class="material-icons">add_circle_outline</span>
+          </button>
         </div>
         <div class="registro-row desp" *ngFor="let d of ultimas(mascota.desparacitaciones, 3)">
           <div>
@@ -65,7 +74,9 @@
       <div class="seccion">
         <div class="sec-header">
           <h3>Cirugías</h3>
-          <button class="btn-add" (click)="nuevaCirugia()">⊕</button>
+          <button class="btn-add" (click)="nuevaCirugia()">
+            <span class="material-icons">add_circle_outline</span>
+          </button>
         </div>
         <div class="registro-row" *ngFor="let c of ultimas(mascota.cirugias, 3)">
           <span>{{ c.description }}</span>

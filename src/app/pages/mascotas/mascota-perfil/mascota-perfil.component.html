@@ -1,29 +1,37 @@
 <div *ngIf="mascota" class="perfil-wrap">
   <!-- FLECHA VOLVER -->
-  <button class="btn-back" (click)="router.navigate(['/mascotas'])">←</button>
+  <button class="btn-back" (click)="router.navigate(['/mascotas'])">
+    <span class="material-icons">arrow_back</span>
+  </button>
   <!-- TARJETA NARANJA -->
   <div class="tarjeta">
     <div class="tarjeta-top">
       <div class="tarjeta-info">
         <div class="nombre-row">
           <span class="nombre">{{ mascota.name | uppercase }}</span>
-          <span class="genero">{{ mascota.gender ? '♂' : '♀' }}</span>
+          <img
+            class="genero-icon"
+            [src]="mascota.gender ? '/macho.png' : '/hembra.png'"
+            [alt]="mascota.gender ? 'Macho' : 'Hembra'">
         </div>
         <span class="raza">{{ mascota.race }}</span>
         <div class="detalle-row">
           <span>{{ calcularEdad() }} años</span>
           <span>{{ mascota.species ? 'Canino' : 'Felino' }}</span>
-          <button class="btn-edit" (click)="editar()">✏️</button>
+          <button class="btn-edit" (click)="editar()">
+            <span class="material-icons" style="color: white;">edit</span>
+          </button>
         </div>
       </div>
       <div class="foto-wrap">
-        <img [src]="mascota.image || 'assets/no-pet.png'" [alt]="mascota.name" />
+        <img [src]="mascota.image || '/althuella.png'" [alt]="mascota.name" (click)="fotoAmpliada = true" />
       </div>
     </div>
     <!-- PROPIETARIO CON FLECHAS -->
     <div class="propietario-row" *ngIf="mascota.propietarios?.length">
-      <button class="flecha" (click)="prevProp()"
-              [disabled]="propIndex === 0">‹</button>
+      <button class="flecha" (click)="prevProp()" [disabled]="propIndex === 0">
+        <span class="material-icons">chevron_left</span>
+      </button>
       <div class="propietario-info">
         <span class="prop-nombre">{{ propActual().nameLastname }}</span>
         <span class="prop-dir">{{ propActual().address }}</span>
@@ -31,8 +39,9 @@
           <span *ngFor="let t of propActual().telefonos">{{ t }}</span>
         </div>
       </div>
-      <button class="flecha" (click)="nextProp()"
-              [disabled]="propIndex === mascota.propietarios.length - 1">›</button>
+      <button class="flecha" (click)="nextProp()" [disabled]="propIndex === mascota.propietarios.length - 1">
+        <span class="material-icons">chevron_right</span>
+      </button>
     </div>
   </div>
   <!-- RESUMEN -->
@@ -87,6 +96,9 @@
         Ver Todo
       </button>
     </div>
+  </div>
+  <div class="overlay-foto" *ngIf="fotoAmpliada" (click)="fotoAmpliada = false">
+    <img [src]="mascota.image || '/althuella.png'" [alt]="mascota.name">
   </div>
 </div>
 <div *ngIf="!mascota" style="text-align:center;padding:40px;color:#aaa;">

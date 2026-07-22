@@ -10,15 +10,15 @@ nav {
   gap: 40px;
 }
 .nav-links a {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 25px;
+  font-weight: 800;
+  font-family: "Nunito", sans-serif;
   color: #2d2d2d;
   text-decoration: none;
-  padding-bottom: 4px;
 }
 .nav-links a.active {
-  color: #E86A10;
-  border-bottom: 2px solid #E86A10;
+  color: #FF6B00;
+  border-bottom: 2px solid #FF6B00;
 }
 .user-btn {
   position: absolute;

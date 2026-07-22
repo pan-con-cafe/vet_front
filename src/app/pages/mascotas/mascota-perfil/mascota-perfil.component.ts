@@ -12,6 +12,7 @@ import { MascotaService } from '../../../core/services/mascota.service';
 export class MascotaPerfilComponent implements OnInit {
   mascota: any = null;
   propIndex = 0;
+  fotoAmpliada = false;
 
   constructor(
     private route: ActivatedRoute,

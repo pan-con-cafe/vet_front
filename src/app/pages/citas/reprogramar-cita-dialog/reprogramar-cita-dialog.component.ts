@@ -33,10 +33,10 @@ export class ReprogramarCitaDialogComponent implements OnInit{
 
   ngOnInit() {
     // Convertir la fecha string a Date para el datepicker
-    if (this.data.date) {
+    /*if (this.data.date) {
       const [y, m, d] = this.data.date.split('-');
       this.nuevaFecha = new Date(+y, +m - 1, +d);
-    }
+    }*/
   }
 
   formatearFechaLocal(fecha: any): string {

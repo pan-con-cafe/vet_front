@@ -1,38 +1,91 @@
-<div style="padding:24px;">
-      <h3 style="margin-bottom:16px;">Nueva cita</h3>
+<div class="cita-modal">
 
-      <mat-form-field style="width:100%;margin-bottom:8px;">
-        <mat-label>Mascota</mat-label>
-        <mat-select [(ngModel)]="form.mascota_FK">
-          <mat-option *ngFor="let m of mascotas" [value]="m.idMascota">
-            {{ m.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+  <h2>Nueva cita</h2>
 
-      <mat-form-field style="width:100%;margin-bottom:8px;">
-        <mat-label>Motivo</mat-label>
-        <mat-select [(ngModel)]="form.typeCita_FK">
-          <mat-option *ngFor="let t of tipos" [value]="t.idTypeCita">
-            {{ t.type }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+  <!-- Mascota -->
+  <div class="mascota-row">
 
-      <mat-form-field style="width:100%;margin-bottom:8px;">
-        <mat-label>Fecha</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="form.date" 
-              [min]="minDate" readonly />
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+    <mat-form-field appearance="fill" class="campo mascota">
 
-      <p *ngIf="error" style="color:red;font-size:12px;">{{ error }}</p>
+      <mat-select
+        [(ngModel)]="form.mascota_FK"
+        placeholder="Mascota">
 
-      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px;">
-        <button mat-stroked-button (click)="close()">Cancelar</button>
-        <button mat-raised-button style="background:#E86A10;color:white;" (click)="save()">
-          Guardar
-        </button>
-      </div>
-    </div>
+        <mat-option
+          *ngFor="let m of mascotas"
+          [value]="m.idMascota" style="font-family: 'Nunito', sans-serif; font-size: 18px;">
+
+          {{ m.name }}
+
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+  </div>
+
+  <!-- Motivo / Fecha -->
+
+  <div class="fila">
+
+    <mat-form-field appearance="fill" class="campo mitad">
+
+      <mat-select
+        [(ngModel)]="form.typeCita_FK"
+        placeholder="Motivo">
+
+        <mat-option
+          *ngFor="let t of tipos"
+          [value]="t.idTypeCita" style="font-family: 'Nunito', sans-serif; font-size: 18px;">
+
+          {{ t.type }}
+
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="campo mitad">
+
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [(ngModel)]="form.date"
+        [min]="minDate"
+        placeholder="Fecha"
+        readonly>
+
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="picker">
+      </mat-datepicker-toggle>
+
+      <mat-datepicker #picker></mat-datepicker>
+
+    </mat-form-field>
+
+  </div>
+
+  <p class="error" *ngIf="error">
+    {{ error }}
+  </p>
+
+  <div class="acciones">
+
+    <button
+      class="btn-cancelar"
+      (click)="close()">
+      Cancelar
+    </button>
+
+    <button
+      class="btn-guardar"
+      (click)="save()">
+      Guardar
+    </button>
+
+  </div>
+
+</div>

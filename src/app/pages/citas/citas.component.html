@@ -6,7 +6,9 @@
       <span class="fecha">{{ hoy }}</span>
     </div>
     <div class="cita-card" *ngFor="let c of citasHoy">
-      <div class="avatar"><span class="material-icons">pets</span></div>
+      <div class="avatar">
+        <img [src]="c.mascota.image || '/huella.png'" [alt]="c.mascota.name" />
+      </div>
       <div class="cita-info">
         <span class="cita-tipo">{{ c.tipo }}</span>
         <span class="cita-mascota">Mascota: {{ c.mascota.name }}</span>
@@ -25,27 +27,33 @@
     </div>
     <p *ngIf="!citasHoy.length" class="empty">No hay citas para hoy</p>
   </div>
+
+  <!-- DIVISOR -->
+  <div class="divider"></div>
+  
   <!-- OTRAS CITAS -->
   <div class="col">
     <div class="col-header">
       <span class="col-title">OTROS</span>
       <button class="btn-nuevo" (click)="nuevaCita()">+ NUEVO</button>
     </div>
-    <div class="cita-row" *ngFor="let c of citasFuturas; let i = index"
-         [class.striped]="i % 2 !== 0">
-      <div class="cita-row-info">
-        <span class="cita-tipo">{{ c.tipo }}</span>
-        <span class="cita-mascota">Mascota: {{ c.mascota.name }}</span>
-      </div>
-      <div class="cita-row-right">
-        <span class="cita-fecha">{{ formatFecha(c.date) }}</span>
-        <div class="cita-actions">
-          <button class="icon-btn" (click)="reprogramar(c)">
-            <span class="material-icons">schedule</span>
-          </button>
-          <button class="icon-btn" (click)="cancelar(c)">
-            <span class="material-icons">close</span>
-          </button>
+    <div class="random">
+      <div class="cita-row" *ngFor="let c of citasFuturas; let i = index"
+          [class.striped]="i % 2 !== 0">
+        <div class="cita-row-info">
+          <span class="cita-tipo">{{ c.tipo }}</span>
+          <span class="cita-mascota">Mascota: {{ c.mascota.name }}</span>
+        </div>
+        <div class="cita-row-right">
+          <span class="cita-fecha">{{ formatFecha(c.date) }}</span>
+          <div class="cita-actions">
+            <button class="icon-btn" (click)="reprogramar(c)">
+              <span class="material-icons">schedule</span>
+            </button>
+            <button class="icon-btn" (click)="cancelar(c)">
+              <span class="material-icons">close</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

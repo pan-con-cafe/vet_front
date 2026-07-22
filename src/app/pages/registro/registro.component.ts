@@ -117,9 +117,22 @@ export class RegistroComponent implements OnInit {
 
   filtrarTelefono(event: Event, i: number, j: number) {
     const input = event.target as HTMLInputElement;
-    const soloNumeros = input.value.replace(/[^0-9\s\+\-]/g, '');
-    input.value = soloNumeros;
-    this.propietarios[i].telefonos[j] = soloNumeros;
+    const cursorPos = input.selectionStart ?? input.value.length;
+
+    const digitosAntesCursor = input.value.slice(0, cursorPos).replace(/\D/g, '').length;
+
+    const soloDigitos = input.value.replace(/\D/g, '').slice(0, 9);
+    const formateado = soloDigitos.replace(/(\d{3})(?=\d)/g, '$1 ');
+
+    input.value = formateado;
+    this.propietarios[i].telefonos[j] = formateado;
+
+    let pos = 0, digitos = 0;
+    while (pos < formateado.length && digitos < digitosAntesCursor) {
+      if (formateado[pos] !== ' ') digitos++;
+      pos++;
+    }
+    input.setSelectionRange(pos, pos);
   }
 
   trackByIndex(index: number): number {

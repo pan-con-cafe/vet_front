@@ -1,0 +1,118 @@
+.vacuna-modal{
+    width: auto;
+    padding: 20px 30px;
+    text-align: center;
+}
+.vacuna-modal h2{
+    font-family:"Nunito",sans-serif;
+    font-size:28px;
+    font-weight:500;
+    color:#222;
+}
+h2{
+    padding-bottom: 30px;
+    margin: 0;
+}
+
+.mascota {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.campo{
+    width:100%;
+    margin-bottom:18px;
+}
+::ng-deep .campo .mat-mdc-text-field-wrapper{
+    background:#dcdcdc !important;
+    border-radius:16px !important;
+    height:50px;
+    padding:0 18px;
+}
+
+::ng-deep .campo .mat-mdc-form-field-flex{
+    height:50px;
+    font-family:"Nunito",sans-serif;
+    font-size:20px;
+}
+
+::ng-deep .campo .mdc-line-ripple{
+    display:none;
+}
+
+::ng-deep .campo .mat-mdc-form-field-subscript-wrapper{
+    display:none;
+    font-size:20px;
+    font-family:"Nunito",sans-serif;
+}
+
+::ng-deep .campo .mat-mdc-select-value,
+::ng-deep .campo input{
+
+    font-size:20px;
+    font-family:"Nunito",sans-serif;
+}
+
+.fila{
+    display:flex;
+    justify-content:center;
+    gap: 35px;
+    margin: 10px 0 30px;
+}
+
+.dato{
+    display:flex;
+    align-items:flex-end;
+    gap: 10px;
+}
+
+.dato label{
+    font-size:22px;
+    font-family:"Nunito",sans-serif;
+}
+
+.dato input{
+    width:70px;
+    border:none;
+    border-bottom:2px solid #777;
+    text-align:center;
+    font-size:22px;
+    outline:none;
+    background:transparent;
+}
+.dato span{
+    font-size:24px;
+}
+.acciones{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    margin-top:20px;
+}
+.btn-cancelar,
+.btn-guardar{
+    width:130px;
+    height:46px;
+    border:none;
+    border-radius:16px;
+    cursor:pointer;
+    font-family:"Fredoka",sans-serif;
+    font-size:20px;
+    font-weight:500;
+}
+.btn-cancelar{
+    background:#555;
+    color:white;
+}
+.btn-guardar{
+    background:#ff7300;
+    color:white;
+}
+.error{
+    color:#d32f2f;
+    font-size:18px;
+    margin-top:8px;
+}

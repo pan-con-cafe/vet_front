@@ -1,14 +1,29 @@
-<div style="padding:24px;text-align:center;">
-  <h3 style="margin-bottom:8px;">¿Cancelar cita?</h3>
-  <p style="font-size:13px;color:#666;margin-bottom:24px;">
-    {{ data.tipo }} — Mascota: {{ data.mascota.name }}<br>
-    {{ formatFecha(data.date) }}
+<div class="cancelar-modal">
+
+  <h2>¿Cancelar cita?</h2>
+
+  <p class="mensaje">
+    ¿Desea cancelar la cita de <strong>{{ data.mascota.name }}</strong>?
   </p>
-  <p *ngIf="error" style="color:red;font-size:12px;">{{ error }}</p>
-  <div style="display:flex;gap:12px;justify-content:center;">
-    <button mat-stroked-button (click)="close()">No, volver</button>
-    <button mat-raised-button color="warn" (click)="cancelar()">
-      Sí, cancelar
+
+  <p class="submensaje">
+    Está acción no se puede deshacer
+  </p>
+
+  <p class="error" *ngIf="error">
+    {{ error }}
+  </p>
+
+  <div class="acciones">
+
+    <button class="btn-cancelar" (click)="close()">
+      No, volver
     </button>
+
+    <button class="btn-eliminar" (click)="cancelar()">
+      Si, cancelar
+    </button>
+
   </div>
+
 </div>

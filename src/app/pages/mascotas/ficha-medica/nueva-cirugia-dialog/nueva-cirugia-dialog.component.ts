@@ -7,11 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CirugiaService } from '../../../../core/services/cirugia.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule  } from '@angular/material/core';
 
 
 @Component({
   selector: 'app-nueva-cirugia-dialog',
-  imports: [CommonModule, FormsModule, MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
+  imports: [CommonModule, FormsModule, MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './nueva-cirugia-dialog.component.html',
   styleUrl: './nueva-cirugia-dialog.component.scss'
 })
