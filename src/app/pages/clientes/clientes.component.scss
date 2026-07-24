@@ -5,6 +5,13 @@
   gap: 16px;
   margin-top: 35px;
   margin-bottom: 45px;
+  padding: 0 16px;
+  flex-wrap: wrap;
+  @media (max-width: 480px) {
+    margin-top: 20px;
+    margin-bottom: 24px;
+    gap: 10px;
+  }
 }
 .search-wrap {
   display: flex;
@@ -14,6 +21,9 @@
   padding: 8px 16px;
   gap: 8px;
   width: 450px;
+  @media (max-width: 480px) {
+    width: 90%;
+  }
 }
 .search-input {
   border: none;
@@ -22,6 +32,9 @@
   font-size: 18px;
   font-family: "Nunito", sans-serif;
   width: 100%;
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 }
 .btn-nuevo {
   background: #FF6B00;
@@ -33,27 +46,49 @@
   font-size: 22px;
   font-weight: 500;
   cursor: pointer;
+  white-space: nowrap;
+  @media (max-width: 480px) {
+    font-size: 18px;
+    padding: 8px 20px;
+  }
 }
+
+.table-wrap {
+  width: 95%;
+  margin: 0 auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 table {
   width: 95%;
+  min-width: 450px;
   margin: 0 auto;
   border-collapse: collapse;
   font-family: "Nunito", sans-serif;
 }
 th {
-  background: white;
+  background: #FDF0E8;
   font-weight: 700;
   font-size: 18px;
   padding: 7px 10px;
   border: 1px solid #ddd;
   text-align: center;
-  background: #FDF0E8;
+  @media (max-width: 480px) {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
 }
+
 td {
   font-size: 16px;
   font-weight: 600;
   padding: 10px 16px;
   border: 1px solid #ddd;
+  @media (max-width: 480px) {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
 }
 
 tr:hover td { 

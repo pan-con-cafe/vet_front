@@ -1,8 +1,20 @@
 <nav>
   <div class="nav-links">
-    <a routerLink="/clientes" routerLinkActive="active">CLIENTE</a>
-    <a routerLink="/mascotas" routerLinkActive="active">MASCOTA</a>
-    <a routerLink="/citas" routerLinkActive="active">CITAS</a>
+    <a routerLink="/clientes" routerLinkActive="active">
+      <img src="/altclientes.png" alt="Clientes" class="nav-icon icon-inactive">
+      <img src="/clientes.png" alt="Clientes" class="nav-icon icon-active">
+      <span class="nav-text">CLIENTES</span>
+    </a>
+    <a routerLink="/mascotas" routerLinkActive="active">
+      <img src="/altmascotas.png" alt="Mascotas" class="nav-icon icon-inactive">
+      <img src="/mascotas.png" alt="Mascotas" class="nav-icon icon-active">
+      <span class="nav-text">MASCOTAS</span>
+    </a>
+    <a routerLink="/citas" routerLinkActive="active">
+      <img src="/altcitas.png" alt="Citas" class="nav-icon icon-inactive">
+      <img src="/citas.png" alt="Citas" class="nav-icon icon-active">
+      <span class="nav-text">CITAS</span>
+    </a>
   </div>
   <button class="user-btn" (click)="openLogoutDialog()">
     <span class="material-icons">account_circle</span>

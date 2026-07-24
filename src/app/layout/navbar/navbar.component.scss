@@ -15,7 +15,18 @@ nav {
   font-family: "Nunito", sans-serif;
   color: #2d2d2d;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+
+.nav-icon {
+  display: none;
+  width: 40px;
+  height: 35px;
+  object-fit: contain;
+}
+
 .nav-links a.active {
   color: #FF6B00;
   border-bottom: 2px solid #FF6B00;
@@ -31,4 +42,27 @@ nav {
 }
 .material-icons {
   font-size: 32px;
+}
+
+//movil
+@media (max-width: 600px) {
+  .nav-text {
+    display: none;
+  }
+
+  .icon-inactive {
+    display: block;
+  }
+
+  .icon-active {
+    display: none;
+  }
+
+  a.active .icon-inactive {
+    display: none;
+  }
+
+  a.active .icon-active {
+    display: block;
+  }
 }
