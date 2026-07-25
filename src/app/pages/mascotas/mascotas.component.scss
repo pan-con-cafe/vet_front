@@ -5,6 +5,13 @@
   gap: 16px;
   margin-top: 35px;
   margin-bottom: 45px;
+  padding: 0 16px;
+  flex-wrap: wrap;
+  @media (max-width: 480px) {
+    margin-top: 20px;
+    margin-bottom: 24px;
+    gap: 10px;
+  }
 }
 .search-wrap {
   display: flex;
@@ -14,6 +21,9 @@
   padding: 8px 16px;
   gap: 8px;
   width: 450px;
+  @media (max-width: 480px) {
+    width: 90%;
+  }
 }
 .search-input {
   border: none;
@@ -22,6 +32,9 @@
   font-size: 18px;
   font-family: "Nunito", sans-serif;
   width: 100%;
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 }
 .btn-nuevo {
   background: #FF6B00;
@@ -33,6 +46,11 @@
   font-size: 22px;
   font-weight: 500;
   cursor: pointer;
+  white-space: nowrap;
+  @media (max-width: 480px) {
+    font-size: 18px;
+    padding: 8px 20px;
+  }
 }
 .grid {
   width: 95%;
@@ -42,6 +60,23 @@
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 16px;
 }
+
+@media (max-width: 500px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .img-wrap {
+    width: 80px;
+    height: 80px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+}
+
 .card {
   border: 1.5px solid #ddd;
   border-radius: 16px;
