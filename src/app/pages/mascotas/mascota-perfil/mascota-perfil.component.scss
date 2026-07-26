@@ -200,6 +200,7 @@ h3 {
   .perfil-wrap {
     max-width: 100%;
     padding: 12px;
+    box-sizing: border-box;
   }
 
   .btn-back {
@@ -209,26 +210,49 @@ h3 {
   .tarjeta {
     width: 100%;
     padding: 18px 20px;
+    box-sizing: border-box;
+  }
+
+  .tarjeta-top {
+    min-width: 0;
+  }
+
+  .tarjeta-info {
+    min-width: 0;
+    flex: 1;
   }
 
   .nombre {
     font-size: 26px;
   }
 
+  .raza,
+  .prop-dir,
+  .prop-nombre {
+    word-break: break-word;
+  }
+
   .foto-wrap {
     width: 85px;
     height: 85px;
+    flex-shrink: 0;
   }
 
   .resumen {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 40px 6% 5%;
-    margin-top: -40px;
+    margin-top: -25px;
+    border-radius: 0 0 20px 20px;
   }
 
   .divider {
     display: none;
+  }
+
+  .col:first-child {
+    padding-bottom: 24px;
+    border-bottom: 1px dashed #ccc;
   }
 
   h3 {
