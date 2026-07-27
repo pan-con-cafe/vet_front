@@ -20,8 +20,9 @@
     </p>
     <button
       class="btn"
+      [disabled]="cargando"
       (click)="login()">
-      Iniciar Sesion
+      {{ cargando ? 'Iniciando...' : 'Iniciar Sesion' }}
     </button>
   </div>
 </div>

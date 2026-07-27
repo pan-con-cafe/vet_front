@@ -18,10 +18,16 @@ export class LoginComponent {
   email = '';
   password = '';
   error = '';
+  cargando = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
+    if (this.cargando) return; // seguridad extra por si acaso
+
+    this.error = '';
+    this.cargando = true;
+
     this.authService.login(this.email, this.password).subscribe({
       next: (res) => {
         this.authService.saveToken(res.token);
@@ -29,6 +35,7 @@ export class LoginComponent {
       },
       error: () => {
         this.error = 'Credenciales incorrectas';
+        this.cargando = false;
       }
     });
   }
