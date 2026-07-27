@@ -275,3 +275,122 @@ textarea.campo{
   gap:22px;
 }
 
+@media (max-width: 700px) {
+  .titulo {
+    font-size: 22px;
+    margin: 20px 0;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  .bloque,
+  .propietario-form {
+    padding: 14px;
+    box-sizing: border-box;
+    border-radius: 16px;
+  }
+
+  .top-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .campos-top {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .img-placeholder {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+  }
+
+  .img-placeholder .material-icons {
+    font-size: 32px !important;
+  }
+
+  .gender-row {
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .gender-btn img {
+    width: 26px !important;
+  }
+
+  .gender-btn.selected img {
+    width: 28px !important;
+  }
+
+  .campo {
+    height: 38px;
+    font-size: 14px;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  .campo.full {
+    box-sizing: border-box;
+  }
+
+  textarea.campo {
+    height: 70px;
+  }
+
+  ::ng-deep .campo-fecha .mat-mdc-text-field-wrapper {
+    height: 38px !important;
+  }
+
+  ::ng-deep .campo-fecha .mat-mdc-form-field-flex {
+    height: 38px !important;
+  }
+
+  .propietario-form .campo {
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .prop-header span {
+    font-size: 15px !important;
+  }
+
+  .btn-añadir {
+    height: 46px;
+    font-size: 17px;
+  }
+
+  .plus {
+    font-size: 26px;
+  }
+
+  .add-tel-btn {
+    font-size: 14px;
+  }
+
+  .suggestion {
+    font-size: 13px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 12px;
+  }
+
+  .btn-cancelar,
+  .btn-guardar {
+    width: 100%;
+    max-width: 280px;
+    height: 44px;
+    font-size: 18px;
+    padding: 0;
+  }
+}

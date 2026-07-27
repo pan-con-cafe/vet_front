@@ -5,9 +5,9 @@
 
 .grooming-modal h2{
     margin:0;
-    font-family:"Fredoka",sans-serif;
-    font-size:30px;
-    font-weight:500;
+    font-family:"Nunito",sans-serif;
+    font-size:28px;
+    font-weight:600;
     color:#222;
 }
 
@@ -15,7 +15,7 @@
     margin:0 0 22px;
     font-family:"Nunito",sans-serif;
     font-size:18px;
-    color:#777;
+    color:#666;
 }
 
 /* HORAS */
@@ -103,14 +103,14 @@
 
 .btn-cancelar,
 .btn-guardar{
-    width:140px;
-    height:42px;
+    width:130px;
+    height:46px;
     border:none;
-    border-radius:30px;
-    font-family:"Fredoka",sans-serif;
-    font-size:24px;
-    font-weight:500;
+    border-radius:16px;
     cursor:pointer;
+    font-family:"Fredoka",sans-serif;
+    font-size:22px;
+    font-weight:500;
 }
 
 .btn-cancelar{

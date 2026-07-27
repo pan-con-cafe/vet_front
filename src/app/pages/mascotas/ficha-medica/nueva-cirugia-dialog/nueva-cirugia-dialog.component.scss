@@ -7,21 +7,21 @@
 .dialog-title{
     font-family:"Nunito",sans-serif;
     font-size:28px;
-    font-weight:500;
+    font-weight:600;
     color:#222;
 }
 
 h2{
-    margin:0;
-    padding-bottom:30px;
+    padding: 0;
+    margin: 0;
 }
 
 .mascota {
-  font-size: 14px;
+  font-size: 18px;
   color: #666;
   text-align: center;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 30px;
 }
 
 /* ===== CAMPO FECHA ===== */
@@ -96,14 +96,14 @@ h2{
 
 .btn-cancel,
 .btn-save{
-    width:140px;
-    height:42px;
+    width:130px;
+    height:46px;
     border:none;
-    border-radius:30px;
-    font-family:"Fredoka",sans-serif;
-    font-size:24px;
-    font-weight:500;
+    border-radius:16px;
     cursor:pointer;
+    font-family:"Fredoka",sans-serif;
+    font-size:22px;
+    font-weight:500;
 }
 
 .btn-cancel{
