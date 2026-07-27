@@ -117,3 +117,27 @@ h2{
     font-size:20px;
     margin-top: 10px;
 }
+
+@media (max-width: 500px) {
+  .desp-modal {
+    padding: 16px 16px;
+  }
+
+  .fila {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .dato label {
+    font-size: 18px;
+  }
+
+  .dato input {
+    width: 55px;
+    font-size: 18px;
+  }
+
+  .dato span {
+    font-size: 18px;
+  }
+}
