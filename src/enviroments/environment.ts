@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://vet-back-5yc5.onrender.com/api'
+  apiUrl: 'https://vet-back-w10u.onrender.com/api'
 };
